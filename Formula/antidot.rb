@@ -5,16 +5,16 @@
 class Antidot < Formula
   desc "Cleans up your $HOME from those pesky dotfiles"
   homepage "https://github.com/doron-cohen/antidot"
-  version "0.6.0"
+  version "0.6.1"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.0/antidot_0.6.0_Darwin_x86_64.tar.gz"
-    sha256 "cc095be1bb5013d8014e95a880f4231c1b642fe9bb558c5259bdbc439d46d32b"
+    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.1/antidot_0.6.1_Darwin_x86_64.tar.gz"
+    sha256 "f8d4dc53dbe3d903e1c00910d3a4e49034dcf0dc7d0cd85107e0626734b278ae"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.0/antidot_0.6.0_Linux_x86_64.tar.gz"
-    sha256 "e7f4fb4b236678479d25cd95ad37448fe9e65e3e67590c14f951227cb98c8b87"
+    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.1/antidot_0.6.1_Linux_x86_64.tar.gz"
+    sha256 "a59ef94837e338a5280dcec7a0b6aa6b662c77f58c23af7c363d35506a0b9811"
   end
 
   def install
