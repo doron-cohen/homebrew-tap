@@ -5,19 +5,35 @@
 class Antidot < Formula
   desc "Cleans up your $HOME from those pesky dotfiles"
   homepage "https://github.com/doron-cohen/antidot"
-  version "0.6.2"
-  bottle :unneeded
+  version "0.6.3"
 
-  if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.2/antidot_0.6.2_Darwin_x86_64.tar.gz"
-    sha256 "bef0ed69fa1565b8b943a51cbe90be74d71497798fff56049c8ea66eb909e8da"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.2/antidot_0.6.2_Linux_x86_64.tar.gz"
-    sha256 "3027e8a1f79741c5b644cf00e52aa232864ca76a8f813337eab343bc123605ed"
+  on_macos do
+    url "https://github.com/doron-cohen/antidot/releases/download/v0.6.3/antidot_0.6.3_Darwin_x86_64.tar.gz"
+    sha256 "d50a762d79ce0ae641096669f9d2fee580a094c979bb1aa75ee36e7efb1a5b36"
+
+    def install
+      bin.install "antidot"
+    end
+
+    if Hardware::CPU.arm?
+      def caveats
+        <<~EOS
+          The darwin_arm64 architecture is not supported for the Antidot
+          formula at this time. The darwin_amd64 binary may work in compatibility
+          mode, but it might not be fully supported.
+        EOS
+      end
+    end
   end
 
-  def install
-    bin.install "antidot"
+  on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/doron-cohen/antidot/releases/download/v0.6.3/antidot_0.6.3_Linux_x86_64.tar.gz"
+      sha256 "69bf8e4de2da1fdada2be866d7ba0a0261cbc9e9e5410bd87c79791f2ce6dbdc"
+
+      def install
+        bin.install "antidot"
+      end
+    end
   end
 end
